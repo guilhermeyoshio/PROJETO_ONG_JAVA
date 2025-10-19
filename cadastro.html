@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Voluntários - ONG Vida Nova</title>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="index.html">
+            <img src="imagens/logo-ong.png" alt="Logo da ONG Vida Nova" style="height: 50px;">
+        </a>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-hamburguer">
+            <span class="linha"></span>
+            <span class="linha"></span>
+            <span class="linha"></span>
+        </label>
+        <nav class="menu-principal">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li class="dropdown">
+                    <a href="projetos.html">Projetos</a>
+                    <ul class="submenu">
+                        <li><a href="#">Projeto Futebol</a></li>
+                        <li><a href="#">Projeto Leitura</a></li>
+                        <li><a href="#">Projeto Horta</a></li>
+                    </ul>
+                </li>
+                <li><a href="cadastro.html">Participe</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div style="max-width: 700px; margin-inline: auto;">
+            <h1>Seja um Voluntário</h1>
+            <p>Preencha seus dados abaixo para se juntar à nossa causa. Entraremos em contato em breve!</p>
+
+            <div class="alert alert-sucesso">
+                <strong>Obrigado!</strong> Seu cadastro foi enviado com sucesso.
+            </div>
+
+            <form action="#" method="post" style="margin-top: var(--spacing-32);">
+                <fieldset>
+                    <legend><strong>Dados Pessoais</strong></legend>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+                        <span class="error-message" id="nome-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required placeholder="exemplo@email.com">
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                        <span class="error-message" id="cpf-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000" pattern="\(\d{2}\)\s\d{5}-\d{4}">
+                        <span class="error-message" id="telefone-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="nascimento">Data de Nascimento:</label>
+                        <input type="date" id="nascimento" name="nascimento" required>
+                        <span class="error-message" id="nascimento-error"></span>
+                    </div>
+                </fieldset>
+
+                <fieldset style="margin-top: var(--spacing-24);">
+                    <legend><strong>Endereço</strong></legend>
+                    <div class="form-group">
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" name="cep" required placeholder="00000-000" pattern="\d{5}-\d{3}">
+                        <span class="error-message" id="cep-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" id="endereco" name="endereco" required placeholder="Rua, número e bairro">
+                        <span class="error-message" id="endereco-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" required>
+                        <span class="error-message" id="cidade-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado:</label>
+                        <input type="text" id="estado" name="estado" required>
+                        <span class="error-message" id="estado-error"></span>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn" style="margin-top: var(--spacing-24);">Enviar Cadastro</button>
+            </form>
+        </div>
+    </div>
+</main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ONG Vida Nova - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

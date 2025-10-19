@@ -1,0 +1,98 @@
+/* ARQUIVO: _responsive.css (VERSÃO FINAL 100% CSS) */
+
+/* Telas médias (Tablets, até 992px) */
+@media (max-width: 992px) {
+  .grid-12 > [style*="grid-column: span 4"] {
+    grid-column: span 6 !important;
+  }
+}
+
+/* Telas pequenas (Celulares, até 767px) - ONDE A MÁGICA DO MENU ACONTECE */
+@media (max-width: 767px) {
+  /* Layout */
+  .grid-12 > [style*="grid-column"] {
+    grid-column: span 12 !important; 
+  }
+  h1 { font-size: var(--fs-h2); }
+  main { padding: var(--spacing-32) 0; }
+
+  /* --- Estilos do Menu Hambúrguer (Checkbox Hack) --- */
+
+  /* 1. O checkbox fica escondido */
+  .menu-checkbox {
+    display: none;
+  }
+
+  /* 2. A label vira nosso botão customizado */
+  .menu-hamburguer {
+    display: flex; /* Faz o botão aparecer */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 20;
+  }
+  .menu-hamburguer .linha {
+    width: 30px;
+    height: 3px;
+    background-color: var(--cor-primaria);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+  }
+
+  /* 3. O menu de navegação começa escondido */
+  .menu-principal {
+    display: none; /* Começa totalmente escondido */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    background-color: #2b2b2b; /* Cor de fundo escura */
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+  }
+  
+  /* 4. A MÁGICA: QUANDO o checkbox está MARCADO, o menu que vem DEPOIS dele no HTML aparece */
+  .menu-checkbox:checked ~ .menu-principal {
+    display: flex; /* Mostra o menu */
+  }
+
+  /* 5. Estilo dos links dentro do menu aberto */
+  .menu-principal ul {
+    flex-direction: column;
+    text-align: center;
+  }
+  .menu-principal a {
+    color: var(--cor-texto-claro);
+    font-size: var(--fs-h3);
+  }
+
+  /* Transforma o hambúrguer num "X" quando o menu está aberto */
+  .menu-checkbox:checked ~ .menu-hamburguer .linha:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+  .menu-checkbox:checked ~ .menu-hamburguer .linha:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-checkbox:checked ~ .menu-hamburguer .linha:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+}
+
+/* Esconde o botão em telas grandes */
+@media (min-width: 768px) {
+    .menu-hamburguer, .menu-checkbox {
+        display: none;
+    }
+}
+
+/* ... outros breakpoints ... */
+@media (max-width: 1200px) { }
+@media (max-width: 576px) { }
+@media (max-width: 480px) { }

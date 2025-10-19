@@ -1,0 +1,37 @@
+/* ARQUIVO: _variables.css (CORRIGIDO) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap');
+
+:root {
+  /* 1. PALETA DE CORES (9 cores agora) */
+  --cor-primaria: #0A3D62;
+  --cor-secundaria: #F9A826;
+  --cor-sucesso: #218838;
+  --cor-perigo: #C82333;
+  --cor-fundo-claro: #F5F7FA;
+  --cor-fundo-componente: #FFFFFF;
+  --cor-texto-escuro: #333333;
+  --cor-texto-claro: #FFFFFF; /* <-- ESTA VARIÁVEL ESTAVA FALTANDO */
+  --cor-borda: #CED4DA;
+
+  /* 2. TIPOGRAFIA (5 tamanhos) */
+  --fonte-titulos: 'Montserrat', sans-serif;
+  --fonte-corpo: 'Roboto', sans-serif;
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.5rem;
+  --fs-p: 1rem;
+  --fs-small: 0.875rem;
+
+  /* 3. ESPAÇAMENTO MODULAR (Base 8px) */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+
+  /* Outros */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease-in-out;
+}
