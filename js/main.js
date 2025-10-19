@@ -279,15 +279,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- FIM DOS TEMPLATES ---
 
 
-    // --- INICIALIZAÇÃO ---
-    // Verifica qual página carregou inicialmente e roda as funções necessárias
-    const initialPage = window.location.pathname.split('/').pop();
-    if (initialPage === 'cadastro.html' || initialPage === '') { // Considera a raiz como index
-        inicializarValidacaoFormulario();
-    }
-    if (initialPage === 'projetos.html' || initialPage === '') {
-        carregarProjetosComTemplate();
-    }
+// --- INICIALIZAÇÃO ---
+    // Verifica qual página carregou inicialmente e roda as funções apropriadas
+    // Usamos endsWith para funcionar mesmo se estiver em subdiretório
+    const currentPagePath = window.location.pathname;
 
+    if (currentPagePath.endsWith('/cadastro.html') || currentPagePath.endsWith('cadastro.html')) {
+        inicializarValidacaoFormulario();
+    } else if (currentPagePath.endsWith('/projetos.html') || currentPagePath.endsWith('projetos.html')) {
+        carregarProjetosComTemplate();
+    } else if (currentPagePath.endsWith('/') || currentPagePath.endsWith('/index.html') || currentPagePath.endsWith('index.html')) {
+        // Nenhuma inicialização específica necessária para index.html no seu código atual
+        // console.log("Carregou Index");
+    }
 
 }); // Fim do DOMContentLoaded
