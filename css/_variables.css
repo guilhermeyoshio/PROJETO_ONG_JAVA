@@ -121,4 +121,8 @@ body.dark-mode .card {
 }
 body.dark-mode footer {
   background-color: #2b2b2b;
-  color: var
+  color: var(--cor-texto-escuro);
+}
+body.dark-mode section[style*="background-color: var(--cor-fundo-componente)"] {
+  background-color: var(--cor-fundo-componente) !important;
+}

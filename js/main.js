@@ -8,46 +8,6 @@
     if (preferencia === 'dark-mode') {
         document.body.classList.add('dark-mode');
     }
-
-    // 2. Adiciona o listener quando o DOM estiver pronto
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        // Função para lidar com o clique do botão de acessibilidade
-        // É chamada aqui e também chamada toda vez que a página SPA é carregada
-        function inicializarToggleAcessibilidade() {
-            const toggleBtn = document.getElementById('accessibility-toggle-btn');
-            
-            if (toggleBtn && !toggleBtn.dataset.listenerAtivo) {
-                toggleBtn.dataset.listenerAtivo = 'true'; // Evita listeners duplicados
-                toggleBtn.addEventListener('click', () => {
-                    const isDarkMode = document.body.classList.toggle('dark-mode');
-                    
-                    // 3. Salva a preferência
-                    if (isDarkMode) {
-                        localStorage.setItem('theme', 'dark-mode');
-                    } else {
-                        localStorage.setItem('theme', 'light-mode');
-                    }
-                });
-            }
-        }
-        
-        // Chama a função na carga inicial da página
-        inicializarToggleAcessibilidade();
-        
-        // Expõe a função globalmente para o SPA poder chamá-la
-        // (Isso é necessário porque o header é recarregado no SPA)
-        // No main.js original, o header NÃO é recarregado, então isso é uma garantia.
-        // Vamos checar a lógica do SPA...
-        // O SPA do main.js original troca SÓ o #main-content. 
-        // Isso significa que o header é estático. Perfeito.
-        // A lógica de expor globalmente não é necessária.
-        // O listener só precisa ser adicionado UMA VEZ.
-        
-        // O código do DOMContentLoaded original já está abaixo.
-        // Vou mover 'inicializarToggleAcessibilidade()' para dentro do 
-        // DOMContentLoaded original para manter tudo junto.
-    });
 })();
 // --- FIM DA SEÇÃO DE ACESSIBILIDADE ---
 
