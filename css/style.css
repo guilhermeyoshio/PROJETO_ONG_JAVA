@@ -1,10 +1,11 @@
-/* ARQUIVO: style.css (CORRIGIDO) */
+/* ARQUIVO: style.css (COMPLETO E MODIFICADO) */
 
 /* Estrutura modular de CSS */
 @import url('_variables.css');
 @import url('_layout.css');
 @import url('_components.css');
-@import url('_responsive.css'); /* <-- ESTA LINHA ESTAVA FALTANDO */
+@import url('_accessibility.css'); /* <-- ADICIONADO PARA O BOTÃO DE TEMA */
+@import url('_responsive.css'); 
 
 /* Resets e Estilos Globais */
 * {

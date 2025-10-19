@@ -1,0 +1,71 @@
+/* ARQUIVO: css/_accessibility.css (ARQUIVO NOVO) */
+
+.accessibility-toggle {
+  background-color: transparent;
+  border: 2px solid var(--cor-primaria);
+  color: var(--cor-primaria);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: var(--transition);
+  position: relative; /* Para esconder/mostrar ícones */
+  overflow: hidden;
+  margin-left: var(--spacing-16); /* Dá um espaço do menu */
+}
+
+.accessibility-toggle:hover,
+.accessibility-toggle:focus {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo-componente);
+  outline: none;
+}
+
+.accessibility-toggle .icon-sun,
+.accessibility-toggle .icon-moon {
+  position: absolute;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Estado Padrão (Modo Claro) = Mostra Sol, Esconde Lua */
+.accessibility-toggle .icon-sun { 
+  transform: translateY(0); 
+  opacity: 1;
+}
+.accessibility-toggle .icon-moon { 
+  transform: translateY(100%); 
+  opacity: 0;
+}
+
+/* Estado Dark-Mode = Esconde Sol, Mostra Lua */
+body.dark-mode .accessibility-toggle {
+  border-color: var(--cor-primaria);
+  color: var(--cor-primaria);
+}
+body.dark-mode .accessibility-toggle:hover,
+body.dark-mode .accessibility-toggle:focus {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo-componente);
+}
+
+body.dark-mode .accessibility-toggle .icon-sun { 
+  transform: translateY(-100%); 
+  opacity: 0;
+}
+body.dark-mode .accessibility-toggle .icon-moon { 
+  transform: translateY(0); 
+  opacity: 1;
+}
+
+/* Ajuste para o menu mobile */
+@media (max-width: 767px) {
+  .accessibility-toggle {
+    z-index: 25; /* Garante que fique acima do menu */
+    margin-left: 0; /* Remove o espaço extra no mobile */
+    position: relative; /* Garante que não seja 'fixed' como o menu */
+  }
+}

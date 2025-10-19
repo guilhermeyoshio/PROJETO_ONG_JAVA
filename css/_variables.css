@@ -1,8 +1,8 @@
-/* ARQUIVO: _variables.css (CORRIGIDO) */
+/* ARQUIVO: _variables.css (COMPLETO E MODIFICADO) */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap');
 
 :root {
-  /* 1. PALETA DE CORES (9 cores agora) */
+  /* 1. PALETA DE CORES (MODO CLARO - PADRÃO) */
   --cor-primaria: #0A3D62;
   --cor-secundaria: #F9A826;
   --cor-sucesso: #218838;
@@ -10,7 +10,7 @@
   --cor-fundo-claro: #F5F7FA;
   --cor-fundo-componente: #FFFFFF;
   --cor-texto-escuro: #333333;
-  --cor-texto-claro: #FFFFFF; /* <-- ESTA VARIÁVEL ESTAVA FALTANDO */
+  --cor-texto-claro: #FFFFFF;
   --cor-borda: #CED4DA;
 
   /* 2. TIPOGRAFIA (5 tamanhos) */
@@ -35,3 +35,90 @@
   --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   --transition: all 0.3s ease-in-out;
 }
+
+
+/* ================================================ */
+/* ===== CÓDIGO ADICIONADO PARA MODO ESCURO ===== */
+/* ================================================ */
+
+/* 2. PALETA MODO ESCURO (ALTO CONTRASTE) */
+body.dark-mode {
+  --cor-primaria: #55aaff; /* Azul mais claro e vibrante */
+  --cor-secundaria: #F9A826; /* Amarelo se mantém bem */
+  --cor-sucesso: #5cb85c; /* Verde mais claro */
+  --cor-perigo: #d9534f; /* Vermelho mais claro */
+  --cor-fundo-claro: #121212; /* Fundo principal escuro */
+  --cor-fundo-componente: #1E1E1E; /* Fundo de cards/header */
+  --cor-texto-escuro: #E0E0E0; /* Texto principal claro */
+  --cor-texto-claro: #121212; /* Texto sobre botões claros (inverte) */
+  --cor-borda: #555555; /* Borda mais clara */
+  
+  --box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+/* Ajustes finos para modo escuro */
+body.dark-mode {
+  /* Garante que a cor de fundo do body mude */
+  background-color: var(--cor-fundo-claro);
+  color: var(--cor-texto-escuro);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: var(--cor-primaria);
+}
+
+/* Ajusta links do Header */
+body.dark-mode header { 
+  background-color: var(--cor-fundo-componente); 
+}
+body.dark-mode header nav a {
+  color: var(--cor-texto-escuro);
+}
+body.dark-mode header nav a:hover {
+  color: var(--cor-primaria);
+  background-color: var(--cor-fundo-claro);
+}
+
+/* Ajusta o menu hamburguer no escuro */
+body.dark-mode .menu-hamburguer .linha {
+    background-color: var(--cor-primaria);
+}
+
+/* Ajusta o menu mobile aberto */
+body.dark-mode .menu-principal {
+    background-color: #2b2b2b; /* Mantém o fundo escuro no menu mobile */
+}
+body.dark-mode .menu-principal a {
+    color: var(--cor-texto-escuro);
+}
+
+/* Ajusta formulário no escuro */
+body.dark-mode .form-group input {
+    background-color: var(--cor-fundo-componente);
+    color: var(--cor-texto-escuro);
+    border-color: var(--cor-borda);
+}
+body.dark-mode .form-group input:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(85, 170, 255, 0.2); /* Sombra do focus azul claro */
+}
+body.dark-mode .form-group input.error {
+    background-color: #4a2d2d; /* Fundo de erro escuro */
+    border-color: var(--cor-perigo);
+}
+
+/* Ajusta botões e cards */
+body.dark-mode .btn {
+  color: var(--cor-texto-claro); /* Texto escuro no botão amarelo */
+}
+body.dark-mode .btn:hover {
+  color: var(--cor-texto-claro); 
+}
+body.dark-mode .card {
+  background-color: var(--cor-fundo-componente);
+}
+body.dark-mode footer {
+  background-color: #2b2b2b;
+  color: var

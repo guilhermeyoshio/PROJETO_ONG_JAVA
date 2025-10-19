@@ -1,6 +1,86 @@
-// ARQUIVO: js/main.js (COMPLETO PARA ATIVIDADE 3)
+// ARQUIVO: js/main.js (COMPLETO E MODIFICADO)
 
+// --- INICIALIZAÇÃO DO MODO DE ACESSIBILIDADE ---
+// Roda IMEDIATAMENTE (IIFE) para evitar "flicker" de tema
+(function() {
+    // 1. Verifica preferência salva no localStorage
+    const preferencia = localStorage.getItem('theme');
+    if (preferencia === 'dark-mode') {
+        document.body.classList.add('dark-mode');
+    }
+
+    // 2. Adiciona o listener quando o DOM estiver pronto
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // Função para lidar com o clique do botão de acessibilidade
+        // É chamada aqui e também chamada toda vez que a página SPA é carregada
+        function inicializarToggleAcessibilidade() {
+            const toggleBtn = document.getElementById('accessibility-toggle-btn');
+            
+            if (toggleBtn && !toggleBtn.dataset.listenerAtivo) {
+                toggleBtn.dataset.listenerAtivo = 'true'; // Evita listeners duplicados
+                toggleBtn.addEventListener('click', () => {
+                    const isDarkMode = document.body.classList.toggle('dark-mode');
+                    
+                    // 3. Salva a preferência
+                    if (isDarkMode) {
+                        localStorage.setItem('theme', 'dark-mode');
+                    } else {
+                        localStorage.setItem('theme', 'light-mode');
+                    }
+                });
+            }
+        }
+        
+        // Chama a função na carga inicial da página
+        inicializarToggleAcessibilidade();
+        
+        // Expõe a função globalmente para o SPA poder chamá-la
+        // (Isso é necessário porque o header é recarregado no SPA)
+        // No main.js original, o header NÃO é recarregado, então isso é uma garantia.
+        // Vamos checar a lógica do SPA...
+        // O SPA do main.js original troca SÓ o #main-content. 
+        // Isso significa que o header é estático. Perfeito.
+        // A lógica de expor globalmente não é necessária.
+        // O listener só precisa ser adicionado UMA VEZ.
+        
+        // O código do DOMContentLoaded original já está abaixo.
+        // Vou mover 'inicializarToggleAcessibilidade()' para dentro do 
+        // DOMContentLoaded original para manter tudo junto.
+    });
+})();
+// --- FIM DA SEÇÃO DE ACESSIBILIDADE ---
+
+
+// CÓDIGO ORIGINAL DO PROJETO (com a adição do listener do botão)
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- ADICIONADO: INICIALIZA O BOTÃO DE ACESSIBILIDADE ---
+    // (A função IIFE acima já aplicou o tema, aqui só adicionamos o clique)
+    function inicializarToggleAcessibilidade() {
+        const toggleBtn = document.getElementById('accessibility-toggle-btn');
+        
+        // Verifica se o botão existe e se já não tem um listener
+        if (toggleBtn && !toggleBtn.dataset.listenerAtivo) {
+            toggleBtn.dataset.listenerAtivo = 'true'; // Marca que o listener foi adicionado
+            toggleBtn.addEventListener('click', () => {
+                const isDarkMode = document.body.classList.toggle('dark-mode');
+                
+                // Salva a preferência
+                if (isDarkMode) {
+                    localStorage.setItem('theme', 'dark-mode');
+                } else {
+                    localStorage.setItem('theme', 'light-mode');
+                }
+            });
+        }
+    }
+    // Chama a função na carga inicial
+    inicializarToggleAcessibilidade();
+    // NOTA: Como o SPA do seu código *NÃO* recarrega o header,
+    // não precisamos chamar essa função de novo dentro do `carregarPagina`.
+    // --- FIM DA ADIÇÃO DE ACESSIBILIDADE ---
+
 
     // --- VALIDAÇÃO DO FORMULÁRIO (AGORA DENTRO DE UMA FUNÇÃO) ---
     function inicializarValidacaoFormulario() {
@@ -281,12 +361,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- INICIALIZAÇÃO ---
     // Verifica qual página carregou inicialmente e roda as funções necessárias
-    const initialPage = window.location.pathname.split('/').pop();
-    if (initialPage === 'cadastro.html' || initialPage === '') { // Considera a raiz como index
+    const initialPage = window.location.pathname.split('/').pop() || 'index.html'; // Garante que a raiz seja 'index.html'
+
+    if (initialPage === 'cadastro.html') {
         inicializarValidacaoFormulario();
     }
-    if (initialPage === 'projetos.html' || initialPage === '') {
+    if (initialPage === 'projetos.html') {
         carregarProjetosComTemplate();
+    }
+    // Para o caso da página inicial (index.html) também ter projetos (se aplicável)
+    if (initialPage === 'index.html') {
+       // Se a home também tivesse projetos, chamaria aqui.
+       // No seu caso, a home não tem, então está ok.
     }
 
 
